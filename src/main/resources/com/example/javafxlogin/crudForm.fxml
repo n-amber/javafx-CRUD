@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="scenePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxlogin.CRUDController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <left>
+            <AnchorPane prefHeight="516.0" prefWidth="400.0" style="-fx-border-color: black; -fx-border-insets: 5px; -fx-border-width: 2px; -fx-border-radius: 10;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="29.0" layoutY="53.0" text="Fullname: ">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="crud_fullname" layoutX="120.0" layoutY="45.0" prefHeight="34.0" prefWidth="237.0" />
+                  <Label layoutX="28.0" layoutY="116.0" text="Username:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="crud_username" layoutX="119.0" layoutY="108.0" prefHeight="34.0" prefWidth="237.0" />
+                  <Label layoutX="28.0" layoutY="297.0" text="Gender:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="28.0" layoutY="237.0" text="Birthday:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="crud_gender" layoutX="119.0" layoutY="288.0" onAction="#customerGender" prefHeight="34.0" prefWidth="237.0" promptText="Choose..." />
+                  <GridPane alignment="CENTER" layoutX="48.0" layoutY="388.0" prefHeight="147.0" prefWidth="304.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="crud_addBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#customerAddBtn" prefHeight="42.0" prefWidth="80.0" text="Add" />
+                        <Button fx:id="crud_updateBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#customerUpdateBtn" prefHeight="42.0" prefWidth="80.0" text="Update" GridPane.columnIndex="1" />
+                        <Button fx:id="crud_deleteBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#customerDeleteBtn" prefHeight="42.0" prefWidth="80.0" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="crud_clearBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#customerClearBtn" prefHeight="42.0" prefWidth="80.0" text="Clear" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Hyperlink layoutX="375.0" layoutY="51.0" prefHeight="23.0" prefWidth="29.0" />
+                  <FontAwesomeIconView glyphName="EDIT" layoutX="374.0" layoutY="71.0" size="25" />
+                  <FontAwesomeIconView glyphName="EDIT" layoutX="373.0" layoutY="136.0" size="25" />
+                  <FontAwesomeIconView glyphName="EDIT" layoutX="373.0" layoutY="196.0" size="25" />
+                  <Label layoutX="28.0" layoutY="177.0" text="Email:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="crud_email" layoutX="119.0" layoutY="169.0" prefHeight="34.0" prefWidth="237.0" />
+                  <FontAwesomeIconView glyphName="EDIT" layoutX="374.0" layoutY="255.0" size="25" />
+                  <DatePicker fx:id="crud_birthday" layoutX="120.0" layoutY="228.0" prefHeight="34.0" prefWidth="237.0" />
+               </children></AnchorPane>
+         </left>
+         <center>
+            <AnchorPane prefHeight="538.0" prefWidth="700.0" style="-fx-border-color: black; -fx-border-insets: 5px; -fx-border-width: 2px; -fx-border-radius: 10;" BorderPane.alignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <VBox layoutX="230.0" layoutY="148.0" prefHeight="570.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView fx:id="crud_tableView" onMouseClicked="#customerSelectData" onSort="#customerShowData" prefHeight="461.0" prefWidth="668.0">
+                          <columns>
+                              <TableColumn fx:id="crud_col_index" prefWidth="38.211517333984375" text="#" />
+                            <TableColumn fx:id="crud_col_id" prefWidth="48.673553466796875" text="Id" />
+                            <TableColumn fx:id="crud_col_fullname" prefWidth="84.32644653320312" text="Fullname" />
+                              <TableColumn fx:id="crud_col_username" prefWidth="121.5987548828125" text="Username" />
+                              <TableColumn fx:id="crud_col_email" prefWidth="127.97064208984375" text="Email" />
+                              <TableColumn fx:id="crud_col_gender" prefWidth="81.02935791015625" text="Gender" />
+                              <TableColumn fx:id="crud_col_birthday" prefWidth="103.96856689453125" text="Birthday" />
+                              <TableColumn fx:id="crud_col_status" prefWidth="92.03143310546875" text="Status" />
+                              <TableColumn fx:id="crud_col_edit" prefWidth="43.38140869140625" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <AnchorPane prefHeight="124.0" prefWidth="668.0">
+                           <children>
+                              <TextField fx:id="keywordFieldText" layoutX="19.0" layoutY="50.0" prefHeight="41.0" prefWidth="595.0" promptText="keywords..." />
+                              <FontAwesomeIconView glyphName="SEARCH" layoutX="627.0" layoutY="78.0" size="25" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+         </center>
+         <top>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="946.9925537109375" minWidth="10.0" prefWidth="933.336669921875" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.37548828125" minWidth="10.0" prefWidth="61.663330078125" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER_RIGHT" text="Welcome," GridPane.columnIndex="1">
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="crud_admin" text="xyz" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink fx:id="crud_logoutBtn" onAction="#logoutAccount" text="Logout">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </GridPane>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>
